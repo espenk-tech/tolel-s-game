@@ -9,7 +9,7 @@ func get_input():
 		var input_direction = Input.get_vector("Left", "Right", "Jump", "Down")
 		#velocity = input_direction * speed + gravity
 		velocity = velocity.move_toward(input_direction * speed + gravity, 150)
-			
+
 	else:
 		var input_direction = Input.get_vector("Left", "Right", "", "")
 		#velocity = input_direction * speed + gravity
