@@ -23,13 +23,15 @@ func get_input():
 	else:
 			yspeed += 10
 		
+	if is_on_wall():
+		xspeed = 0	
+	
 	if Input.is_action_pressed("Left"):
 		xspeed -= 10
 	if Input.is_action_pressed("Right"):
 		xspeed += 10
 		
-	if is_on_wall():
-		xspeed = 0
+
 	
 	if xspeed >= maxspeed:
 		xspeed = maxspeed

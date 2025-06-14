@@ -424,6 +424,6 @@ zoom = Vector2(2, 2)
 [node name="Line2D" type="Line2D" parent="CharacterBody2D"]
 position = Vector2(0, 1)
 points = PackedVector2Array(0, 0, 30, 0)
-width = 2.0
+width = 4.45
 default_color = Color(0.952106, 4.11518e-06, 9.62615e-07, 1)
 script = ExtResource("4_kx2s4")
