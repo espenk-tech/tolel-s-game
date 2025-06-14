@@ -406,7 +406,7 @@ collision_visibility_mode = 1
 texture_filter = 1
 position = Vector2(0, -16)
 script = ExtResource("2_74kyy")
-maxspeed = 300
+maxspeed = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(0, 1)
