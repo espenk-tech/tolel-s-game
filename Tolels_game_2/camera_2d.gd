@@ -22,7 +22,7 @@ func _process(delta):
 		return
 	
 	if freeze_camera:
-		global_position = frozen_position
+		global_position = global_position.lerp(frozen_position, delta * return_speed)
 	else:
 		global_position = global_position.lerp(player.global_position, delta * return_speed)
 
@@ -30,6 +30,6 @@ func _input(event):
 	if event.is_action_pressed("follow_stop"):
 		if not freeze_camera:
 			freeze_camera = true
-			frozen_position = global_position
+			frozen_position = player.global_position
 	elif event.is_action_released("follow_stop"):
 		freeze_camera = false
