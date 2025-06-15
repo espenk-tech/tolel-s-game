@@ -1,5 +1,6 @@
-[gd_scene load_steps=20 format=4 uid="uid://c1ufmijx36fgu"]
+[gd_scene load_steps=25 format=4 uid="uid://c1ufmijx36fgu"]
 
+[ext_resource type="Script" uid="uid://dbstv75i3t8x4" path="res://Node2D.gd" id="1_a5omd"]
 [ext_resource type="Texture2D" uid="uid://ql5h75g5pcw4" path="res://test_tilemap01.png" id="1_w3snd"]
 [ext_resource type="Script" uid="uid://cxtiue1dln6l4" path="res://chara_movement2.gd" id="2_74kyy"]
 [ext_resource type="Texture2D" uid="uid://bituh0p28cl8b" path="res://testplayer01.png" id="2_pi5jr"]
@@ -15,6 +16,8 @@
 [ext_resource type="AudioStream" uid="uid://c38b0x667pbuc" path="res://stopslide01.wav" id="7_k8edd"]
 [ext_resource type="AudioStream" uid="uid://c18l51f6x2d70" path="res://music test.wav" id="10_jbk63"]
 [ext_resource type="Script" uid="uid://c6gxcjsujj55t" path="res://music.gd" id="15_dh6s1"]
+[ext_resource type="Script" uid="uid://c1jkcbewcklky" path="res://enemy_movment.gd" id="16_6hu18"]
+[ext_resource type="Texture2D" uid="uid://bndsdtym1dlgt" path="res://sprite folder/Spikeguy.png" id="17_a5omd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pi5jr"]
 texture = ExtResource("1_w3snd")
@@ -409,7 +412,22 @@ size = Vector2(16, 30)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b5yu0"]
 size = Vector2(132.995, 20)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_revhw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_a5omd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yllia"]
+size = Vector2(21.0058, 16.7143)
+
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_a5omd")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
@@ -503,3 +521,15 @@ volume_db = -16.997
 autoplay = true
 playback_type = 1
 script = ExtResource("15_dh6s1")
+
+[node name="enemy" type="CharacterBody2D" parent="."]
+position = Vector2(256, -15)
+script = ExtResource("16_6hu18")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="enemy"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_revhw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy"]
+scale = Vector2(1.42818, 1.79487)
+shape = SubResource("RectangleShape2D_yllia")

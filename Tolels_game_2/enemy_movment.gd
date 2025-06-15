@@ -17,3 +17,6 @@ func find_node_recursive(node: Node, name: String) -> Node:
 func _process(delta):
 	if player != null:
 		global_position = global_position.lerp(player.global_position, delta * enemy_speed)
+
+func _physics_process(delta):
+	move_and_slide()
