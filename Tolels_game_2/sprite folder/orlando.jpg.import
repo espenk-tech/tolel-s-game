@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cd4d01p0melkc"
-path="res://.godot/imported/orlando.jpg-842e943126fc0bb140032d934affeb27.ctex"
+path="res://.godot/imported/orlando.jpg-1fdc8082f1027c0fca9a92c5b0611dc8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://orlando.jpg"
-dest_files=["res://.godot/imported/orlando.jpg-842e943126fc0bb140032d934affeb27.ctex"]
+source_file="res://sprite folder/orlando.jpg"
+dest_files=["res://.godot/imported/orlando.jpg-1fdc8082f1027c0fca9a92c5b0611dc8.ctex"]
 
 [params]
 

@@ -1,22 +1,21 @@
-[gd_scene load_steps=25 format=4 uid="uid://c1ufmijx36fgu"]
+[gd_scene load_steps=24 format=4 uid="uid://c1ufmijx36fgu"]
 
-[ext_resource type="Script" uid="uid://dbstv75i3t8x4" path="res://Node2D.gd" id="1_a5omd"]
-[ext_resource type="Texture2D" uid="uid://ql5h75g5pcw4" path="res://test_tilemap01.png" id="1_w3snd"]
+[ext_resource type="Texture2D" uid="uid://vdhhg1dcij7n" path="res://sprite folder/test_tilemap01.png" id="1_w3snd"]
 [ext_resource type="Script" uid="uid://cxtiue1dln6l4" path="res://chara_movement2.gd" id="2_74kyy"]
-[ext_resource type="Texture2D" uid="uid://bituh0p28cl8b" path="res://testplayer01.png" id="2_pi5jr"]
+[ext_resource type="Texture2D" uid="uid://c1wm7he7uaiep" path="res://sprite folder/testplayer01.png" id="2_pi5jr"]
 [ext_resource type="Script" uid="uid://bdkco104le6d1" path="res://camera_2d.gd" id="4_b5yu0"]
 [ext_resource type="Script" uid="uid://cou7muq7qdnbh" path="res://velocityindicator.gd" id="4_kx2s4"]
 [ext_resource type="Script" uid="uid://b065o6o4qado0" path="res://leftclone.gd" id="4_pr5en"]
 [ext_resource type="Script" uid="uid://brgbo3qxepjtv" path="res://rightclone.gd" id="5_78fwt"]
 [ext_resource type="AudioStream" uid="uid://fg36ce0fnol1" path="res://jump01.wav" id="5_vfacy"]
-[ext_resource type="Texture2D" uid="uid://cd4d01p0melkc" path="res://orlando.jpg" id="6_8ws1j"]
+[ext_resource type="Texture2D" uid="uid://cd4d01p0melkc" path="res://sprite folder/orlando.jpg" id="6_8ws1j"]
 [ext_resource type="Script" uid="uid://c3mj723hect0x" path="res://upclone.gd" id="6_anyac"]
 [ext_resource type="AudioStream" uid="uid://drs0qvd8sg0ut" path="res://slide01.wav" id="6_dey3m"]
 [ext_resource type="Script" uid="uid://c7oqgs3d66eel" path="res://downclone.gd" id="7_esf3g"]
 [ext_resource type="AudioStream" uid="uid://c38b0x667pbuc" path="res://stopslide01.wav" id="7_k8edd"]
 [ext_resource type="AudioStream" uid="uid://c18l51f6x2d70" path="res://music test.wav" id="10_jbk63"]
 [ext_resource type="Script" uid="uid://c6gxcjsujj55t" path="res://music.gd" id="15_dh6s1"]
-[ext_resource type="Script" uid="uid://c1jkcbewcklky" path="res://enemy_movment.gd" id="16_6hu18"]
+[ext_resource type="Script" path="res://enemy_movment.gd" id="16_6hu18"]
 [ext_resource type="Texture2D" uid="uid://bndsdtym1dlgt" path="res://sprite folder/Spikeguy.png" id="17_a5omd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pi5jr"]
@@ -427,7 +426,6 @@ animations = [{
 size = Vector2(21.0058, 16.7143)
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource("1_a5omd")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
@@ -438,10 +436,13 @@ collision_visibility_mode = 1
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -16)
+slide_on_ceiling = false
 floor_constant_speed = true
 floor_snap_length = 8.0
+safe_margin = 1.0
 script = ExtResource("2_74kyy")
 maxspeed = 300
+coyote_time = 0.2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(0, 1)
@@ -525,6 +526,7 @@ script = ExtResource("15_dh6s1")
 [node name="enemy" type="CharacterBody2D" parent="."]
 position = Vector2(256, -15)
 script = ExtResource("16_6hu18")
+enemy_speed = 0.44
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="enemy"]
 texture_filter = 1
