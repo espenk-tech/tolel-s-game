@@ -33,3 +33,19 @@ func _input(event):
 			frozen_position = player.global_position
 	elif event.is_action_released("follow_stop"):
 		freeze_camera = false
+		
+	var win := get_window()
+	var parent_win := get_parent().get_window()
+	var current_size := win.size
+
+	if Input.is_action_pressed("scrollup"):
+		var new_size = Vector2i(current_size[0] * 1.1, current_size[1] * 1.1)
+		var offset = (new_size - current_size) / 2
+		parent_win.position -= offset
+		parent_win.size = new_size
+
+	if Input.is_action_pressed("scrolldown"):
+		var new_size = Vector2i(current_size[0] / 1.1, current_size[1] / 1.1)
+		var offset = (new_size - current_size) / 2
+		parent_win.position -= offset
+		parent_win.size = new_size

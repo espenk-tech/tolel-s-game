@@ -490,7 +490,6 @@ scale = Vector2(1.96, 0.57)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(5.96046e-08, -7.62939e-06)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_b5yu0")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
@@ -500,6 +499,7 @@ texture = ExtResource("6_8ws1j")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_jbk63")
-volume_db = -14.404
+volume_db = -16.997
+autoplay = true
 playback_type = 1
 script = ExtResource("15_dh6s1")
