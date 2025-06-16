@@ -1,0 +1,3 @@
+var material := ShaderMaterial.new()
+material.shader = preload("res://shaders/water.shader")
+$Water_Polygon.material = material

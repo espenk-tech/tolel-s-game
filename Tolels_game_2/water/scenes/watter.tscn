@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhtciucjsown8"]
+
+[ext_resource type="Shader" uid="uid://cn2t2p3xsgtmk" path="res://scenes/water_shader.gdshader" id="1_8dxqj"]
+[ext_resource type="Script" uid="uid://d2rd3q45rhefm" path="res://scenes/smooth_path_modified.gd" id="2_i7idd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i7idd"]
+shader = ExtResource("1_8dxqj")
+shader_parameter/tint = Color(0, 0.819608, 0.901961, 1)
+
+[sub_resource type="Curve2D" id="Curve2D_412vp"]
+
+[node name="watter" type="Node2D"]
+
+[node name="Water_Polygon" type="Polygon2D" parent="."]
+material = SubResource("ShaderMaterial_i7idd")
+position = Vector2(-2, 0)
+
+[node name="Water_Border" type="Path2D" parent="."]
+curve = SubResource("Curve2D_412vp")
+script = ExtResource("2_i7idd")
+metadata/_custom_type_script = "uid://d2rd3q45rhefm"
