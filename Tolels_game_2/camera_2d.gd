@@ -20,7 +20,6 @@ func _process(delta):
 	if player == null:
 		push_warning("CharacterBody2D node not found!")
 		return
-	print(global_position)
 	if freeze_camera:
 		global_position = global_position.lerp(frozen_position, delta * return_speed)
 	else:

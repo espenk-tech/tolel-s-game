@@ -442,8 +442,6 @@ floor_constant_speed = true
 floor_snap_length = 8.0
 safe_margin = 1.0
 script = ExtResource("2_74kyy")
-maxspeed = 300
-coyote_time = 0.2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(0, 1)

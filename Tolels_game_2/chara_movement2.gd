@@ -5,15 +5,17 @@ var xspeed = 0
 var was_on_ceiling = false
 var just_looped_x = false
 var just_looped_y = false
-@export var maxspeed = 200
-@export var coyote_time = 0.5
-var coyote_timer = coyote_time 
+@export var maxspeed = 300
+@export var coyote_time = 0.2
+@export var buffer_time = 0.13
+var coyote_timer = 0 
+var buffer_timer = 0
 
 func find_node_recursive(node: Node, name: String) -> Node:
 	if node.name == name:
 		return node
 	for child in node.get_children():
-		var found = find_node_recursive(child, name)
+		var found = find_node_recursive(child, name)  
 		if found:
 			return found
 	return null
@@ -28,9 +30,10 @@ func get_input():
 			xspeed /= 1.15
 	else:
 		xspeed /= 1.03
-	if Input.is_action_just_pressed("Jump") and coyote_timer > 0 :
+	if buffer_timer > 0 and coyote_timer > 0 :
 		yspeed = -300
 		coyote_timer = 0*1
+		buffer_timer = 0*1
 		$JumpSFX.play()
 		
 	elif is_on_ceiling():
@@ -103,6 +106,9 @@ func _physics_process(delta):
 		coyote_timer = coyote_time
 	else:
 		coyote_timer -= delta
+		buffer_timer -= delta
+	if Input.is_action_just_pressed("Jump"):
+		buffer_timer = buffer_time
 	get_input()
 	move_and_slide()
 	teleport()
