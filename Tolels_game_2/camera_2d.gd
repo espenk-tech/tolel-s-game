@@ -20,7 +20,7 @@ func _process(delta):
 	if player == null:
 		push_warning("CharacterBody2D node not found!")
 		return
-	
+	print(global_position)
 	if freeze_camera:
 		global_position = global_position.lerp(frozen_position, delta * return_speed)
 	else:
@@ -37,15 +37,3 @@ func _input(event):
 	var win := get_window()
 	var parent_win := get_parent().get_window()
 	var current_size := win.size
-
-	if Input.is_action_pressed("scrollup"):
-		var new_size = Vector2i(current_size[0] * 1.1, current_size[1] * 1.1)
-		var offset = (new_size - current_size) / 2
-		parent_win.position -= offset
-		parent_win.size = new_size
-
-	if Input.is_action_pressed("scrolldown"):
-		var new_size = Vector2i(current_size[0] / 1.1, current_size[1] / 1.1)
-		var offset = (new_size - current_size) / 2
-		parent_win.position -= offset
-		parent_win.size = new_size

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://c1ufmijx36fgu"]
+[gd_scene load_steps=25 format=4 uid="uid://c1ufmijx36fgu"]
 
 [ext_resource type="Texture2D" uid="uid://vdhhg1dcij7n" path="res://sprite folder/test_tilemap01.png" id="1_w3snd"]
 [ext_resource type="Script" uid="uid://cxtiue1dln6l4" path="res://chara_movement2.gd" id="2_74kyy"]
@@ -17,8 +17,9 @@
 [ext_resource type="Script" uid="uid://c6gxcjsujj55t" path="res://music.gd" id="15_dh6s1"]
 [ext_resource type="Script" path="res://enemy_movment.gd" id="16_6hu18"]
 [ext_resource type="Texture2D" uid="uid://bndsdtym1dlgt" path="res://sprite folder/Spikeguy.png" id="17_a5omd"]
+[ext_resource type="Texture2D" uid="uid://dkrgl3rgbixbr" path="res://sprite folder/baltero.webp" id="18_a5omd"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pi5jr"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a5omd"]
 texture = ExtResource("1_w3snd")
 use_texture_padding = false
 0:0/0 = 0
@@ -403,7 +404,7 @@ physics_layer_0/collision_layer = 1
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Blue Blocks"
 terrain_set_0/terrain_0/color = Color(0, 0.262745, 0.956863, 1)
-sources/1 = SubResource("TileSetAtlasSource_pi5jr")
+sources/1 = SubResource("TileSetAtlasSource_a5omd")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_74kyy"]
 size = Vector2(16, 30)
@@ -493,14 +494,6 @@ playback_type = 1
 stream = ExtResource("7_k8edd")
 playback_type = 1
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -19)
-zoom = Vector2(2, 2)
-script = ExtResource("4_b5yu0")
-
-[node name="AudioListener2D" type="AudioListener2D" parent="Camera2D"]
-current = true
-
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 texture_filter = 1
 position = Vector2(-12.485, -219.79)
@@ -535,3 +528,21 @@ sprite_frames = SubResource("SpriteFrames_revhw")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy"]
 scale = Vector2(1.42818, 1.79487)
 shape = SubResource("RectangleShape2D_yllia")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+script = ExtResource("4_b5yu0")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="Camera2D"]
+current = true
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+z_index = -10
+scroll_scale = Vector2(-0.3, -0.3)
+repeat_size = Vector2(1920, 1080)
+repeat_times = 2
+follow_viewport = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("18_a5omd")

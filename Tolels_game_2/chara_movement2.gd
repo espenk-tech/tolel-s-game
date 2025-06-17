@@ -104,6 +104,5 @@ func _physics_process(delta):
 	else:
 		coyote_timer -= delta
 	get_input()
-	print(xspeed)
 	move_and_slide()
 	teleport()
