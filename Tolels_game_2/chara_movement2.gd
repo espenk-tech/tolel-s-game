@@ -58,7 +58,7 @@ func get_input(delta):
 		
 	if is_on_wall():
 		collision_timer -= delta
-		if collision_timer > 0:
+		if collision_timer <= 0:
 			xspeed = 0
 	if Input.is_action_pressed("Left"):
 		xspeed -= 10
@@ -110,10 +110,10 @@ func _physics_process(delta):
 		coyote_timer -= delta
 		buffer_timer -= delta
 	print(collision_timer)
-	if collision_timer < 0 and is_on_wall() == false:
+	if is_on_wall() == false:
 		collision_timer = collision_time
 	if Input.is_action_just_pressed("Jump"):
 		buffer_timer = buffer_time
 	get_input(delta)
 	move_and_slide()
-#	teleport()
+	teleport()

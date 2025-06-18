@@ -15,7 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://c38b0x667pbuc" path="res://stopslide01.wav" id="7_k8edd"]
 [ext_resource type="AudioStream" uid="uid://c18l51f6x2d70" path="res://music test.wav" id="10_jbk63"]
 [ext_resource type="Script" uid="uid://c6gxcjsujj55t" path="res://music.gd" id="15_dh6s1"]
-[ext_resource type="Script" path="res://enemy_movment.gd" id="16_6hu18"]
+[ext_resource type="Script" uid="uid://c1jkcbewcklky" path="res://enemy_movment.gd" id="16_6hu18"]
 [ext_resource type="Texture2D" uid="uid://bndsdtym1dlgt" path="res://sprite folder/Spikeguy.png" id="17_a5omd"]
 [ext_resource type="Texture2D" uid="uid://dkrgl3rgbixbr" path="res://sprite folder/baltero.webp" id="18_a5omd"]
 
