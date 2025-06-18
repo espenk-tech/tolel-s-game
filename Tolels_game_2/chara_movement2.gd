@@ -8,7 +8,9 @@ var just_looped_y = false
 @export var maxspeed = 300
 @export var coyote_time = 0.2
 @export var buffer_time = 0.13
+@export var collision_time = 0.2
 var coyote_timer = 0 
+var collision_timer = 0
 var buffer_timer = 0
 
 func find_node_recursive(node: Node, name: String) -> Node:
@@ -23,7 +25,7 @@ func find_node_recursive(node: Node, name: String) -> Node:
 @onready var camera = find_node_recursive(get_tree().get_current_scene(), "Camera2D")
 
 
-func get_input():
+func get_input(delta):
 	if (is_on_floor() or is_on_ceiling()):
 		yspeed = 0
 		if not ((Input.is_action_pressed("Left") and xspeed < 0) or (Input.is_action_pressed("Right") and xspeed > 0)):
@@ -55,17 +57,17 @@ func get_input():
 			was_on_ceiling = false
 		
 	if is_on_wall():
-		xspeed = 0	
+		collision_timer -= delta
+		if collision_timer > 0:
+			xspeed = 0
 	if Input.is_action_pressed("Left"):
 		xspeed -= 10
 	if Input.is_action_pressed("Right"):
 		xspeed += 10
-		
 	if xspeed >= maxspeed:
 		xspeed = maxspeed
 	elif xspeed <= -maxspeed:
 		xspeed = -maxspeed
-	#print(xspeed)
 	if xspeed > -1 and xspeed < 1:
 		xspeed = 0
 	velocity = Vector2(xspeed, yspeed)
@@ -99,7 +101,7 @@ func teleport():
 		just_looped_y = false
 
 
-		
+
 
 func _physics_process(delta):
 	if is_on_floor():
@@ -107,8 +109,11 @@ func _physics_process(delta):
 	else:
 		coyote_timer -= delta
 		buffer_timer -= delta
+	print(collision_timer)
+	if collision_timer < 0 and is_on_wall() == false:
+		collision_timer = collision_time
 	if Input.is_action_just_pressed("Jump"):
 		buffer_timer = buffer_time
-	get_input()
+	get_input(delta)
 	move_and_slide()
-	teleport()
+#	teleport()
