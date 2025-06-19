@@ -437,7 +437,7 @@ tile_map_data = PackedByteArray("AAAVAAAAAQAKAAAAAAAUAAAAAQAKAAAAAAATAAAAAQAKAAA
 tile_set = SubResource("TileSet_74kyy")
 collision_visibility_mode = 1
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="Player" type="CharacterBody2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -16)
 slide_on_ceiling = false
@@ -445,67 +445,68 @@ floor_constant_speed = true
 floor_snap_length = 8.0
 safe_margin = 1.0
 script = ExtResource("2_74kyy")
+collision_time = 0.05
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="Player_Collision" type="CollisionShape2D" parent="Player"]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_74kyy")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Player_Sprite" type="Sprite2D" parent="Player"]
 texture_filter = 1
 texture = ExtResource("2_pi5jr")
 
-[node name="leftclone" type="Sprite2D" parent="CharacterBody2D/Sprite2D"]
+[node name="leftclone" type="Sprite2D" parent="Player/Player_Sprite"]
 texture_filter = 1
 texture = ExtResource("2_pi5jr")
 script = ExtResource("4_pr5en")
 
-[node name="rightclone" type="Sprite2D" parent="CharacterBody2D/Sprite2D"]
+[node name="rightclone" type="Sprite2D" parent="Player/Player_Sprite"]
 texture_filter = 1
 texture = ExtResource("2_pi5jr")
 script = ExtResource("5_78fwt")
 
-[node name="upclone" type="Sprite2D" parent="CharacterBody2D/Sprite2D"]
+[node name="upclone" type="Sprite2D" parent="Player/Player_Sprite"]
 texture_filter = 1
 texture = ExtResource("2_pi5jr")
 script = ExtResource("6_anyac")
 
-[node name="downclone" type="Sprite2D" parent="CharacterBody2D/Sprite2D"]
+[node name="downclone" type="Sprite2D" parent="Player/Player_Sprite"]
 texture_filter = 1
 texture = ExtResource("2_pi5jr")
 script = ExtResource("7_esf3g")
 
-[node name="Line2D" type="Line2D" parent="CharacterBody2D"]
+[node name="Velocity_Indicator" type="Line2D" parent="Player"]
 position = Vector2(0, 1)
 points = PackedVector2Array(0, 0, 30, 0)
 width = 2.0
 default_color = Color(0.952106, 4.11518e-06, 9.62615e-07, 1)
 script = ExtResource("4_kx2s4")
 
-[node name="JumpSFX" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+[node name="JumpSFX" type="AudioStreamPlayer2D" parent="Player"]
 stream = ExtResource("5_vfacy")
 playback_type = 1
 
-[node name="SlideSFX" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+[node name="SlideSFX" type="AudioStreamPlayer2D" parent="Player"]
 stream = ExtResource("6_dey3m")
 volume_db = -10.0
 pitch_scale = 1.22
 playback_type = 1
 
-[node name="StopSlideSFX" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+[node name="StopSlideSFX" type="AudioStreamPlayer2D" parent="Player"]
 stream = ExtResource("7_k8edd")
 playback_type = 1
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="diagonal_Platform" type="StaticBody2D" parent="."]
 texture_filter = 1
 position = Vector2(-12.485, -219.79)
 rotation = -0.429351
 scale = Vector2(1.96, 0.57)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="Platform_Collision" type="CollisionShape2D" parent="diagonal_Platform"]
 position = Vector2(5.96046e-08, -7.62939e-06)
 shape = SubResource("RectangleShape2D_b5yu0")
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+[node name="Platform_Sprite" type="Sprite2D" parent="diagonal_Platform"]
 position = Vector2(0, -7.62939e-06)
 scale = Vector2(0.243636, 0.0485437)
 texture = ExtResource("6_8ws1j")
@@ -517,16 +518,16 @@ autoplay = true
 playback_type = 1
 script = ExtResource("15_dh6s1")
 
-[node name="enemy" type="CharacterBody2D" parent="."]
+[node name="Enemy" type="CharacterBody2D" parent="."]
 position = Vector2(256, -15)
 script = ExtResource("16_6hu18")
 enemy_speed = 0.44
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="enemy"]
+[node name="Enemy_Sprite" type="AnimatedSprite2D" parent="Enemy"]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_revhw")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy"]
+[node name="Enemy_Collision" type="CollisionShape2D" parent="Enemy"]
 scale = Vector2(1.42818, 1.79487)
 shape = SubResource("RectangleShape2D_yllia")
 
@@ -534,22 +535,50 @@ shape = SubResource("RectangleShape2D_yllia")
 zoom = Vector2(2, 2)
 script = ExtResource("4_b5yu0")
 
-[node name="AudioListener2D" type="AudioListener2D" parent="Camera2D"]
+[node name="AudioListener" type="AudioListener2D" parent="Camera2D"]
 current = true
 
-[node name="Parallax2D" type="Parallax2D" parent="."]
+[node name="Parallax" type="Parallax2D" parent="."]
 z_index = -10
 scroll_scale = Vector2(-0.3, -0.3)
 repeat_size = Vector2(1920, 1080)
 repeat_times = 2
 follow_viewport = false
 
-[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+[node name="Parallax_background" type="Sprite2D" parent="Parallax"]
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("18_a5omd")
 
 [node name="use_cam_area" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="use_cam_area"]
+[node name="use_cam_area_Boundary" type="CollisionShape2D" parent="use_cam_area"]
 position = Vector2(160, -27)
 shape = SubResource("RectangleShape2D_a5omd")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="boundary_visual" type="Polygon2D" parent="use_cam_area/use_cam_area_Boundary"]
+editor_description = "Previevt den Screen der durch die Position von cam_center angegebene Position ausgelöst wird."
+z_index = 10
+position = Vector2(7.15256e-06, 0)
+scale = Vector2(30, 26)
+color = Color(0.878431, 0.439216, 0.772549, 0.368627)
+polygon = PackedVector2Array(0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5)
+uv = PackedVector2Array(0, 0, -72.4098, -3.81205, -88.1397, 21.0248, -5.76422, 33.0293)
+polygons = [PackedInt32Array(2, 1, 0, 3)]
+internal_vertex_count = 3
+
+[node name="cam_center" type="Marker2D" parent="use_cam_area"]
+position = Vector2(131, -206)
+gizmo_extents = 20.0
+
+[node name="cam_previev" type="Polygon2D" parent="use_cam_area/cam_center"]
+editor_description = "Previevt den Screen der durch die Position von cam_center angegebene Position ausgelöst wird."
+visible = false
+z_index = 10
+position = Vector2(-6.53453e-05, -3.67537e-05)
+scale = Vector2(960, 540)
+color = Color(0.435294, 0.839216, 0.54902, 0.0509804)
+polygon = PackedVector2Array(0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5)
+uv = PackedVector2Array(0, 0, -72.4098, -3.81205, -88.1397, 21.0248, -5.76422, 33.0293)
+polygons = [PackedInt32Array(2, 1, 0, 3)]
+internal_vertex_count = 3

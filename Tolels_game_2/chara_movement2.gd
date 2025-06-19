@@ -101,15 +101,12 @@ func teleport():
 		just_looped_y = false
 
 
-
-
 func _physics_process(delta):
 	if is_on_floor():
 		coyote_timer = coyote_time
 	else:
 		coyote_timer -= delta
 		buffer_timer -= delta
-	print(collision_timer)
 	if is_on_wall() == false:
 		collision_timer = collision_time
 	if Input.is_action_just_pressed("Jump"):
