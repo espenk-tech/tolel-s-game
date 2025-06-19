@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://c1ufmijx36fgu"]
+[gd_scene load_steps=26 format=4 uid="uid://c1ufmijx36fgu"]
 
 [ext_resource type="Texture2D" uid="uid://vdhhg1dcij7n" path="res://sprite folder/test_tilemap01.png" id="1_w3snd"]
 [ext_resource type="Script" uid="uid://cxtiue1dln6l4" path="res://chara_movement2.gd" id="2_74kyy"]
@@ -426,6 +426,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yllia"]
 size = Vector2(21.0058, 16.7143)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a5omd"]
+size = Vector2(30, 26)
+
 [node name="Node2D" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -544,3 +547,9 @@ follow_viewport = false
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("18_a5omd")
+
+[node name="use_cam_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="use_cam_area"]
+position = Vector2(160, -27)
+shape = SubResource("RectangleShape2D_a5omd")
