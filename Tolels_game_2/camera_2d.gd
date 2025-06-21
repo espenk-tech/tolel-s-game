@@ -4,6 +4,7 @@ extends Camera2D
 
 @onready var player = find_node_recursive(get_tree().get_current_scene(), "Player")
 @onready var area   = find_node_recursive(get_tree().get_current_scene(), "use_cam_area")
+@onready var freeze_timer: Timer = $freeze_timer
 
 var freeze_camera   = false
 var frozen_position = Vector2.ZERO
@@ -22,7 +23,8 @@ func start_freeze():
 	freeze_camera = true
 	freeze_timer_running = true
 	frozen_position = area.find_child("cam_center", false).global_position
-	await get_tree().create_timer(10.0).timeout
+	freeze_timer.start(10)
+	await freeze_timer.timeout
 	freeze_camera = false
 	freeze_timer_running = false
 
